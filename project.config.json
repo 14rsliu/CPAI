@@ -26,6 +26,7 @@
     }
   },
   "appid": "your-appid-here",
+  "author": "HansLIU",
   "projectname": "CPAI",
   "libVersion": "2.19.4",
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
