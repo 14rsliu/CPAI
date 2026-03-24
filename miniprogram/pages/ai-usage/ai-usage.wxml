@@ -112,3 +112,10 @@
     <button class="btn-result" bindtap="viewResult">查看所有测试结果</button>
   </view>
 </view>
+
+  <!-- 浮动窗口组件 -->
+  <floating-window 
+    id="floatingWindow" 
+    isOpen="{{isFloatingWindowOpen}}" 
+    bind:toggle="onFloatingWindowToggle"
+  />

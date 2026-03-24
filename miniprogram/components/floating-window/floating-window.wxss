@@ -1,0 +1,207 @@
+/* components/floating-window/floating-window.wxss */
+.floating-window {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+  transition: left 0.3s ease;
+}
+
+/* 浮动按钮 */
+.float-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100rpx;
+  height: 200rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 0 16rpx 16rpx 0;
+  box-shadow: 2px 0 20rpx rgba(102, 126, 234, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.float-btn:active {
+  transform: scale(0.95);
+}
+
+.btn-icon {
+  font-size: 48rpx;
+  margin-bottom: 8rpx;
+}
+
+.btn-text {
+  font-size: 24rpx;
+  color: white;
+  font-weight: 500;
+}
+
+/* 侧边栏 */
+.sidebar {
+  width: 320rpx;
+  background: white;
+  border-radius: 0 16rpx 16rpx 0;
+  box-shadow: 2px 0 30rpx rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 32rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.sidebar-title {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.close-btn {
+  font-size: 40rpx;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.close-btn:active {
+  transform: scale(0.9);
+}
+
+/* 进度部分 */
+.progress-section {
+  padding: 32rpx;
+  background: #f8f9fa;
+  border-bottom: 1rpx solid #e9ecef;
+}
+
+.progress-title {
+  font-size: 28rpx;
+  color: #495057;
+  margin-bottom: 16rpx;
+  font-weight: 500;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 16rpx;
+  background: #e9ecef;
+  border-radius: 8rpx;
+  overflow: hidden;
+  margin-bottom: 12rpx;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8rpx;
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  font-size: 24rpx;
+  color: #6c757d;
+  text-align: right;
+}
+
+/* 测试列表 */
+.test-list {
+  padding: 16rpx 0;
+  max-height: 600rpx;
+  overflow-y: auto;
+}
+
+.test-item {
+  display: flex;
+  align-items: center;
+  padding: 24rpx 32rpx;
+  transition: background 0.2s ease;
+  cursor: pointer;
+}
+
+.test-item:active {
+  background: #f8f9fa;
+}
+
+.test-item.completed {
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.test-icon {
+  font-size: 40rpx;
+  margin-right: 24rpx;
+  width: 60rpx;
+  text-align: center;
+}
+
+.test-info {
+  flex: 1;
+}
+
+.test-name {
+  font-size: 28rpx;
+  color: #212529;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.test-status {
+  font-size: 24rpx;
+  color: #6c757d;
+}
+
+.test-item.completed .test-status {
+  color: #28a745;
+}
+
+.test-arrow {
+  font-size: 32rpx;
+  color: #dee2e6;
+  margin-left: 16rpx;
+}
+
+/* 操作按钮 */
+.action-buttons {
+  padding: 32rpx;
+  border-top: 1rpx solid #e9ecef;
+}
+
+.action-btn {
+  width: 100%;
+  height: 88rpx;
+  border-radius: 12rpx;
+  font-size: 30rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  margin-bottom: 16rpx;
+}
+
+.action-btn:last-child {
+  margin-bottom: 0;
+}
+
+.action-btn.primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+}
+
+.action-btn.primary:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+.action-btn.secondary {
+  background: white;
+  color: #667eea;
+  border: 2rpx solid #667eea;
+}
+
+.action-btn.secondary:active {
+  background: #f8f9fa;
+}

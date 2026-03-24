@@ -195,3 +195,19 @@
   background: linear-gradient(135deg, #667eea, #764ba2);
   color: white;
 }
+
+.btn-match {
+  width: 100%;
+  font-size: 28rpx;
+  font-weight: 500;
+  padding: 24rpx;
+  border-radius: 16rpx;
+  margin-top: 20rpx;
+  border: 2rpx solid #667eea;
+  background: white;
+  color: #667eea;
+}
+
+.btn-match:active {
+  background: #f8f9fa;
+}

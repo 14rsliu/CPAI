@@ -16,5 +16,8 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "cloud": true
+  "cloud": true,
+  "usingComponents": {
+    "floating-window": "/components/floating-window/floating-window"
+  }
 }

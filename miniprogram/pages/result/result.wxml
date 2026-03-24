@@ -134,3 +134,10 @@
     </view>
   </view>
 </view>
+
+  <!-- 浮动窗口组件 -->
+  <floating-window 
+    id="floatingWindow" 
+    isOpen="{{isFloatingWindowOpen}}" 
+    bind:toggle="onFloatingWindowToggle"
+  />

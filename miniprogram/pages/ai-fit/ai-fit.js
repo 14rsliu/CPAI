@@ -202,4 +202,13 @@ Page({
   nextTest: function () {
     wx.navigateTo({ url: '/pages/ai-replace/ai-replace' });
   }
+
+  // 浮动窗口事件处理
+  onFloatingWindowToggle: function (e) {
+    this.setData({
+      isFloatingWindowOpen: e.detail.isOpen
+    });
+  }
+
+}
 });

@@ -53,7 +53,16 @@
       </view>
     </view>
 
+    <button class="btn-match" bindtap="calculateMatch">🎯 查看性格与职业匹配度</button>
+
     <button class="btn-home" bindtap="goHome">返回首页</button>
     <button class="btn-next" bindtap="nextTest">继续 AI 适配度测试</button>
   </view>
+
+  <!-- 浮动窗口组件 -->
+  <floating-window 
+    id="floatingWindow" 
+    isOpen="{{isFloatingWindowOpen}}" 
+    bind:toggle="onFloatingWindowToggle"
+  />
 </view>

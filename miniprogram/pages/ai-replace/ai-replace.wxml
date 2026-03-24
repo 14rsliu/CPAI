@@ -71,3 +71,10 @@
     <button class="btn-next" bindtap="nextTest">继续 AI 应用调查</button>
   </view>
 </view>
+
+  <!-- 浮动窗口组件 -->
+  <floating-window 
+    id="floatingWindow" 
+    isOpen="{{isFloatingWindowOpen}}" 
+    bind:toggle="onFloatingWindowToggle"
+  />

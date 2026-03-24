@@ -32,11 +32,25 @@
 
   <view class="result-card" wx:if="{{showResult}}">
     <view class="result-title">🎭 你的性格类型</view>
-    <view class="result-type">{{resultType}}</view>
+    <view class="result-type-main">{{resultType}}</view>
+    <view class="result-subtype-badge">{{resultSubType}} · {{resultSubTypeDesc}}</view>
+    <view class="result-name">{{resultName}}</view>
     <view class="result-desc">{{resultDesc}}</view>
     
+    <!-- 历史名人卡片 -->
+    <view class="celebrities-section" wx:if="{{celebrities.length > 0}}">
+      <view class="section-title">🌟 相同性格的历史名人</view>
+      <view class="celebrities-grid">
+        <view class="celebrity-card" wx:for="{{celebrities}}" wx:key="name">
+          <view class="celebrity-icon">{{item.icon}}</view>
+          <view class="celebrity-name">{{item.name}}</view>
+          <view class="celebrity-title">{{item.title}}</view>
+        </view>
+      </view>
+    </view>
+    
     <view class="career-suggestions">
-      <view class="section-title">适合的职业方向</view>
+      <view class="section-title">💼 适合的职业方向</view>
       <view class="career-list">
         <view class="career-item" wx:for="{{careers}}" wx:key="index">
           {{item}}
@@ -47,4 +61,11 @@
     <button class="btn-home" bindtap="goHome">返回首页</button>
     <button class="btn-next" bindtap="nextTest">继续下一个测试</button>
   </view>
+
+  <!-- 浮动窗口组件 -->
+  <floating-window 
+    id="floatingWindow" 
+    isOpen="{{isFloatingWindowOpen}}" 
+    bind:toggle="onFloatingWindowToggle"
+  />
 </view>

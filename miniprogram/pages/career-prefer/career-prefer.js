@@ -1,4 +1,6 @@
 // pages/career-prefer/career-prefer.js
+const matchUtil = require('../../utils/match.js');
+
 const questions = [
   { question: "你喜欢动手制作和修理东西吗？", type: "R", options: ["非常喜欢", "喜欢", "一般", "不喜欢", "非常不喜欢"], scores: [3, 2, 1, 0, -1] },
   { question: "你喜欢研究科学问题和做实验吗？", type: "I", options: ["非常喜欢", "喜欢", "一般", "不喜欢", "非常不喜欢"], scores: [3, 2, 1, 0, -1] },
@@ -61,7 +63,9 @@ Page({
     resultDesc: '',
     careers: [],
     hollandScores: [],
-    progress: 0
+    progress: 0,
+    isFloatingWindowOpen: false,
+    matchResult: null
   },
 
   onLoad: function () {
@@ -137,5 +141,41 @@ Page({
 
   nextTest: function () {
     wx.navigateTo({ url: '/pages/ai-fit/ai-fit' });
+  },
+
+  // 浮动窗口事件处理
+  onFloatingWindowToggle: function (e) {
+    this.setData({
+      isFloatingWindowOpen: e.detail.isOpen
+    });
+  },
+
+  // 计算性格与职业匹配度
+  calculateMatch: function () {
+    const results = wx.getStorageSync('testResults') || {};
+    const personalityType = results.personality?.type;
+    const careerCode = this.data.resultCode;
+    
+    if (!personalityType || !careerCode) {
+      wx.showModal({
+        title: '⚠️ 提示',
+        content: '请先完成性格测试后再查看匹配度',
+        showCancel: false,
+        confirmText: '知道了',
+        confirmColor: '#667eea'
+      });
+      return;
+    }
+    
+    const match = matchUtil.calculateMatch(personalityType, careerCode);
+    this.setData({ matchResult: match });
+    
+    wx.showModal({
+      title: '🎯 性格与职业匹配度',
+      content: `你的性格类型：${personalityType}\n职业偏好代码：${careerCode}\n\n匹配度：${match.score}分 (${match.level})\n\n${match.suggestions[0] || ''}`,
+      showCancel: false,
+      confirmText: '知道了',
+      confirmColor: '#667eea'
+    });
   }
 });

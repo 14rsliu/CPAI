@@ -1,0 +1,46 @@
+<!--components/floating-window/floating-window.wxml-->
+<view class="floating-window" style="left: {{isOpen ? '0' : '-280rpx'}};">
+  <!-- 浮动按钮 (关闭状态时显示) -->
+  <view class="float-btn" bindtap="toggleWindow" hidden="{{isOpen}}">
+    <view class="btn-icon">📋</view>
+    <view class="btn-text">查询</view>
+  </view>
+
+  <!-- 侧边栏 (打开状态时显示) -->
+  <view class="sidebar" hidden="{{!isOpen}}">
+    <view class="sidebar-header">
+      <view class="sidebar-title">📊 测试进度</view>
+      <view class="close-btn" bindtap="toggleWindow">✕</view>
+    </view>
+
+    <view class="progress-section">
+      <view class="progress-title">整体进度</view>
+      <view class="progress-bar-bg">
+        <view class="progress-bar-fill" style="width: {{progressPercent}}%;"></view>
+      </view>
+      <view class="progress-text">{{completedCount}}/5 已完成</view>
+    </view>
+
+    <view class="test-list">
+      <view class="test-item {{item.completed ? 'completed' : ''}}" 
+            bindtap="navigateToTest" 
+            data-type="{{item.id}}">
+        <view class="test-icon">{{item.icon}}</view>
+        <view class="test-info">
+          <view class="test-name">{{item.name}}</view>
+          <view class="test-status">{{item.completed ? '已完成' : '未完成'}}</view>
+        </view>
+        <view class="test-arrow">></view>
+      </view>
+    </view>
+
+    <view class="action-buttons">
+      <button class="action-btn primary" bindtap="viewResult">
+        查看完整报告
+      </button>
+      <button class="action-btn secondary" bindtap="backHome">
+        返回主页
+      </button>
+    </view>
+  </view>
+</view>

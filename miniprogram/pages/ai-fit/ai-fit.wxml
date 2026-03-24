@@ -64,3 +64,10 @@
     <button class="btn-next" bindtap="nextTest">继续 AI 取代风险测试</button>
   </view>
 </view>
+
+  <!-- 浮动窗口组件 -->
+  <floating-window 
+    id="floatingWindow" 
+    isOpen="{{isFloatingWindowOpen}}" 
+    bind:toggle="onFloatingWindowToggle"
+  />
