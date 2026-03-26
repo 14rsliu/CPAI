@@ -30,7 +30,8 @@
     </button>
   </view>
 
-  <view class="result-card" wx:if="{{showResult}}">
+  <!-- ===== 家长模式结果 ===== -->
+  <view class="result-card" wx:if="{{showResult && !isStudentMode}}">
     <view class="result-title">⚠️ AI 取代风险评估</view>
     
     <view class="risk-gauge">
@@ -63,6 +64,64 @@
         <view class="suggestion-item" wx:for="{{protections}}" wx:key="index">
           <view class="suggestion-icon">{{item.icon}}</view>
           <view class="suggestion-text">{{item.text}}</view>
+        </view>
+      </view>
+    </view>
+
+    <button class="btn-home" bindtap="goHome">返回首页</button>
+    <button class="btn-next" bindtap="nextTest">继续 AI 应用调查</button>
+  </view>
+
+  <!-- ===== 学生模式结果 ===== -->
+  <view class="result-card" wx:if="{{showResult && isStudentMode}}">
+    <view class="result-title">🎓 AI时代专业推荐方案</view>
+    
+    <view class="risk-gauge">
+      <view class="gauge-bg recommend-gauge">
+        <view class="gauge-pointer" style="transform: rotate({{recommendRotation}}deg);"></view>
+      </view>
+      <view class="gauge-labels">
+        <view class="gauge-label left">参考</view>
+        <view class="gauge-label right">强烈推荐</view>
+      </view>
+    </view>
+
+    <view class="recommend-level">{{recommendLevel}}</view>
+    <view class="result-percent">综合推荐指数：{{recommendPercent}}%</view>
+    <view class="result-desc">{{recommendDesc}}</view>
+
+    <!-- 推荐专业卡片 -->
+    <view class="major-section">
+      <view class="section-title">🎯 专属推荐专业</view>
+      <view class="major-list">
+        <view class="major-card" wx:for="{{recommendedMajors}}" wx:key="name" style="animation-delay: {{index * 0.1}}s;">
+          <view class="major-header">
+            <view class="major-emoji">{{item.emoji}}</view>
+            <view class="major-name">{{item.name}}</view>
+            <view class="major-irreplaceable {{item.irreplaceable === '高' ? 'high' : 'medium'}}">{{item.irreplaceable}}</view>
+          </view>
+          <view class="major-reason">{{item.reason}}</view>
+          <view class="major-match-bar">
+            <view class="match-bar-bg">
+              <view class="match-bar-fill" style="width: {{item.match}}%"></view>
+            </view>
+            <view class="match-bar-text">匹配度 {{item.match}}%</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- AI时代热门专业 TOP 5 -->
+    <view class="hot-majors-section">
+      <view class="section-title">🔥 AI时代热门专业 TOP 5</view>
+      <view class="hot-major-list">
+        <view class="hot-major-item" wx:for="{{hotMajors}}" wx:key="name">
+          <view class="hot-major-rank">{{index + 1}}</view>
+          <view class="hot-major-info">
+            <view class="hot-major-name">{{item.emoji}} {{item.name}}</view>
+            <view class="hot-major-reason">{{item.reason}}</view>
+          </view>
+          <view class="hot-major-heat">{{item.heat}}</view>
         </view>
       </view>
     </view>

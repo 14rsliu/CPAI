@@ -375,3 +375,184 @@
   transform: scale(0.97);
   box-shadow: 0 4rpx 12rpx rgba(102,126,234,0.3);
 }
+
+/* ===== 学生模式结果样式 ===== */
+
+/* 推荐等级 */
+.recommend-level {
+  font-size: var(--font-2xl);
+  font-weight: 700;
+  text-align: center;
+  padding: var(--space-4);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-3);
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  color: #065f46;
+  animation: pulse 2s infinite;
+}
+
+/* 推荐指数仪表盘 */
+.recommend-gauge {
+  background: conic-gradient(
+    from 270deg,
+    #93c5fd 0deg,
+    #93c5fd 45deg,
+    #60a5fa 45deg,
+    #60a5fa 90deg,
+    #667eea 90deg,
+    #667eea 135deg,
+    #764ba2 135deg,
+    #764ba2 180deg
+  ) !important;
+}
+
+/* 推荐专业区域 */
+.major-section {
+  margin-bottom: var(--space-5);
+}
+
+.major-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.major-card {
+  background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  border: 2rpx solid #e0e7ff;
+  animation: slideUp 0.5s var(--ease-out) both;
+}
+
+.major-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--space-2);
+}
+
+.major-emoji {
+  font-size: 48rpx;
+  margin-right: var(--space-2);
+}
+
+.major-name {
+  flex: 1;
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--gray-900);
+}
+
+.major-irreplaceable {
+  font-size: var(--font-xs);
+  font-weight: 600;
+  padding: 6rpx 16rpx;
+  border-radius: var(--radius-full);
+}
+
+.major-irreplaceable.high {
+  background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+  color: #065f46;
+}
+
+.major-irreplaceable.medium {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #92400e;
+}
+
+.major-reason {
+  font-size: var(--font-sm);
+  color: var(--gray-600);
+  line-height: 1.6;
+  margin-bottom: var(--space-3);
+  padding-left: var(--space-8);
+}
+
+/* 匹配度进度条 */
+.major-match-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.match-bar-bg {
+  flex: 1;
+  height: 12rpx;
+  background: var(--gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.match-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: var(--radius-full);
+  transition: width 1s var(--ease-out-expo);
+}
+
+.match-bar-text {
+  font-size: var(--font-xs);
+  color: var(--gray-500);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* 热门专业 TOP 5 */
+.hot-majors-section {
+  margin-bottom: var(--space-5);
+}
+
+.hot-major-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.hot-major-item {
+  display: flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border-radius: var(--radius-lg);
+  border: 1rpx solid #fde68a;
+  animation: slideUp 0.4s var(--ease-out) both;
+}
+
+.hot-major-rank {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-size: var(--font-sm);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--space-3);
+  flex-shrink: 0;
+}
+
+.hot-major-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.hot-major-name {
+  font-size: var(--font-base);
+  font-weight: 600;
+  color: var(--gray-900);
+  margin-bottom: 4rpx;
+}
+
+.hot-major-reason {
+  font-size: var(--font-xs);
+  color: var(--gray-500);
+  line-height: 1.4;
+}
+
+.hot-major-heat {
+  font-size: var(--font-xs);
+  flex-shrink: 0;
+  margin-left: var(--space-2);
+}

@@ -15,6 +15,7 @@ App({
 
   globalData: {
     userInfo: null,
+    userRole: '', // 'parent' or 'student'
     testResults: {
       personality: null,
       careerPrefer: null,
@@ -22,5 +23,12 @@ App({
       aiReplace: null,
       aiUsage: null
     }
+  },
+
+  onShareAppMessage: function () {
+    return {
+      title: 'AI时代来了！快给孩子测测适合什么专业 🔥',
+      path: '/pages/index/index'
+    };
   }
 });

@@ -120,7 +120,7 @@ Page({
 
   viewResult: function () {
     wx.navigateTo({ url: '/pages/result/result' });
-  }
+  },
 
   // 浮动窗口事件处理
   onFloatingWindowToggle: function (e) {
@@ -128,6 +128,4 @@ Page({
       isFloatingWindowOpen: e.detail.isOpen
     });
   }
-
-}
 });

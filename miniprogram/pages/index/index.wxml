@@ -1,63 +1,48 @@
 <!--pages/index/index.wxml-->
 <view class="container">
+  <!-- 醒目 Banner -->
+  <view class="banner">
+    <view class="banner-fire">🔥</view>
+    <view class="banner-text">AI时代已来！孩子究竟适合什么职业？</view>
+    <view class="banner-sub">测一测性格指数，AI帮你规划未来不被淘汰</view>
+  </view>
+
   <view class="header">
     <view class="title">🗼 职业偏好 & AI 适配测试</view>
     <view class="subtitle">探索你的职业方向，了解 AI 时代的发展机会</view>
   </view>
 
+  <!-- 角色选择 -->
+  <view class="role-selector">
+    <view class="role-card {{userRole === 'parent' ? 'selected' : ''}}" bindtap="selectRole" data-role="parent">
+      <view class="role-emoji">👨‍👩‍👧</view>
+      <view class="role-name">家长模式</view>
+      <view class="role-desc">给您的孩子测一测</view>
+    </view>
+    <view class="role-card {{userRole === 'student' ? 'selected' : ''}}" bindtap="selectRole" data-role="student">
+      <view class="role-emoji">🎓</view>
+      <view class="role-name">学生模式</view>
+      <view class="role-desc">帮我选专业</view>
+    </view>
+  </view>
+
   <view class="test-list">
-    <view class="test-card" bindtap="startTest" data-type="personality">
-      <view class="card-icon">🎭</view>
+    <view class="test-card {{item.completed ? 'completed' : ''}}" bindtap="startTest" data-type="{{item.id}}" wx:for="{{tests}}" wx:key="id">
+      <view class="card-icon">{{item.icon}}</view>
       <view class="card-content">
-        <view class="card-title">性格测试</view>
-        <view class="card-desc">了解你的性格类型，发现适合的职业方向</view>
-        <view class="card-info">20 题 · 约 3 分钟</view>
-      </view>
-      <view class="card-arrow">></view>
-    </view>
-
-    <view class="test-card" bindtap="startTest" data-type="careerPrefer">
-      <view class="card-icon">💼</view>
-      <view class="card-content">
-        <view class="card-title">职业偏好度测试</view>
-        <view class="card-desc">霍兰德职业兴趣测试，找到你真正喜欢的工作</view>
-        <view class="card-info">30 题 · 约 5 分钟</view>
-      </view>
-      <view class="card-arrow">></view>
-    </view>
-
-    <view class="test-card" bindtap="startTest" data-type="aiFit">
-      <view class="card-icon">🤖</view>
-      <view class="card-content">
-        <view class="card-title">AI 时代适配度测试</view>
-        <view class="card-desc">在 AI 浪潮下，你适合做什么？</view>
-        <view class="card-info">15 题 · 约 3 分钟</view>
-      </view>
-      <view class="card-arrow">></view>
-    </view>
-
-    <view class="test-card" bindtap="startTest" data-type="aiReplace">
-      <view class="card-icon">⚠️</view>
-      <view class="card-content">
-        <view class="card-title">AI 取代风险评估</view>
-        <view class="card-desc">你的工作会被 AI 取代吗？</view>
-        <view class="card-info">10 题 · 约 2 分钟</view>
-      </view>
-      <view class="card-arrow">></view>
-    </view>
-
-    <view class="test-card" bindtap="startTest" data-type="aiUsage">
-      <view class="card-icon">📊</view>
-      <view class="card-content">
-        <view class="card-title">AI 应用调查</view>
-        <view class="card-desc">你目前用 AI 做什么？帮助我们更好了解用户</view>
-        <view class="card-info">5 题 · 约 1 分钟</view>
+        <view class="card-title">{{item.id === 'aiReplace' && userRole === 'student' ? item.studentTitle : (item.parentTitle || item.name)}}</view>
+        <view class="card-desc">{{item.id === 'aiReplace' && userRole === 'student' ? item.studentDesc : (item.parentDesc || item.desc || '')}}</view>
+        <view class="card-info" wx:if="{{item.id === 'personality'}}">20 题 · 约 3 分钟</view>
+        <view class="card-info" wx:elif="{{item.id === 'careerPrefer'}}">30 题 · 约 5 分钟</view>
+        <view class="card-info" wx:elif="{{item.id === 'aiFit'}}">15 题 · 约 3 分钟</view>
+        <view class="card-info" wx:elif="{{item.id === 'aiReplace'}}">10 题 · 约 2 分钟</view>
+        <view class="card-info" wx:elif="{{item.id === 'aiUsage'}}">5 题 · 约 1 分钟</view>
       </view>
       <view class="card-arrow">></view>
     </view>
   </view>
 
   <view class="footer">
-    <view class="footer-text">完成所有测试，获取完整的职业发展规划建议</view>
+    <view class="footer-text">{{footerText}}</view>
   </view>
 </view>
